@@ -36,8 +36,11 @@ void counting(int w){
 }
 
 void sol(){
-    for(int i=1; i<n;i++){
-        d.insert(arr[i]-arr[i-1]);
+    for(int i=0; i<n;i++){
+        for(int j=0; j<n; j++){
+            if(i==j)continue;
+            d.insert((arr[i]-arr[j])/(i-j));
+        }
     }
     for(auto i : d){ // i 씩 증가한다고 가정
         counting(i);
