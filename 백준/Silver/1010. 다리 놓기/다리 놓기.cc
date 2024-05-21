@@ -1,24 +1,25 @@
-#include <iostream>
-#include <vector>
-#include <queue>
+#include <stdio.h>
 
-using namespace std;
+unsigned long long p(int n, int s);
 
-int main(){
-    int t;
-    cin >> t;
-    while(t--){
-        int a,b;
-        cin >> a >> b;
-        a=min(a,b-a);
-        unsigned long long k = 1;
-        for(int i=b; i>=b-a+1; i--){
-            k*=i;
-        }
-        for(int i=2; i<=a; i++)
-            k/=i;
-        cout << k << '\n';
+int main()
+{
+    int num, n, m, i;
+    scanf("%d", &num);
+    for (i = 0; i < num; i++)
+    {
+        scanf("%d %d", &n, &m);
+        if(m-n < n) n = m-n;
+        printf("%llu\n", p(m, m - n + 1) / p(n, 1));
     }
-
     return 0;
 }
+unsigned long long p(int n, int s)
+{
+    unsigned long long a = 1;
+    unsigned long long i;
+    for (i = n; i >= s; i--)
+        a *= i;
+    return a;
+}
+//
